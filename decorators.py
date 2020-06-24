@@ -14,7 +14,7 @@ def with_static(static_file_name=None):
                 ctx = {}
             elif not isinstance(ctx, dict):
                 return ctx
-            return send_from_directory('static', file_name)
+            return send_from_directory('static', file_name), ctx
 
         return decorated_function
 
