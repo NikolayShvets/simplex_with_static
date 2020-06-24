@@ -9,12 +9,12 @@ def with_static(static_file_name=None):
             file_name = static_file_name
             if file_name is None:
                 file_name = request.endpoint.replace('.', '/') + '.html'
-            ctx = func(*args, **kwargs)
-            if ctx is None:
-                ctx = {}
-            elif not isinstance(ctx, dict):
-                return ctx
-            return send_from_directory('static', file_name), ctx
+            res = func(*args, **kwargs)
+            if res is None:
+                res = {}
+            elif not isinstance(res, dict):
+                return res
+            return send_from_directory('static', file_name), res
 
         return decorated_function
 
